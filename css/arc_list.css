@@ -1,0 +1,189 @@
+
+body{
+    max-width: 750px;
+    min-width: 320px;
+    margin: 0 auto;
+    width:100%;
+    background: #F2F2F2;
+    padding-top: 1rem;
+}
+
+.header{
+    width:100%;
+    height: 1rem;
+    line-height: 1rem;
+    background: #FFFFFF;
+    display: block;
+    position: fixed;
+    top:0;
+    max-width: 750px;
+    border-bottom: 1.059666rem solid #CCCCCC;
+    /*white-space:nowrap;*/
+    /*overflow:hidden;*/
+}
+
+/**
+.header ul{
+
+}
+.header ul li{
+    display: inline-block;
+    height: 0.8rem;
+    margin: 0 0.1rem;
+    text-align: center;
+    font-size: 0.32rem;
+    color: #4d4d4d;
+}
+.header ul li span{
+    display: inline-block;
+    line-height: 0.8rem;
+}**/
+.content_list{
+    width:100%;
+    margin-top: 1px;
+    display: none;
+}
+.show{
+    display: block;
+}
+
+.content_list .article{
+    margin-top: 0.2rem;
+    padding:0 0.3rem 0.38rem 0.3rem;
+    border-bottom: 1px solid #CCCCCC;
+    background: #FFFFFF;
+}
+.content_list .article:nth-child(1){
+    margin-top: 0.15rem;
+}
+.content_list .article h2{
+    font-size: 0.3rem;
+    color: #4d4d4d;
+    line-height: 0.35rem;
+    padding-top: 0.2rem;
+}
+.content_list .article img{
+    width:100%;
+    height: 4.32rem;
+    display: block;
+    margin:0 auto;
+    margin-top: 0.3rem;
+}
+/*swiper容器的改造*/
+.header .active{
+    color: #fe8d9f;
+    border-bottom: 2px solid #fe8d9f;
+}
+.content_list .hdTop .active2{
+    color: #FFFFFF;
+   background: #fe8d9f !important;
+}
+.header .swiper-container {
+    width: 100%;
+    background: #FFFFFF;
+}
+/**/
+/*.header .swiper-slide span{*/
+    /*display: block;*/
+/*}*/
+
+.header .swiper-slide {
+    text-align: center;
+    font-size: 0.32rem;
+    background: #fff;
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+/*新增加的*/
+.header .swiper-slide.active  a{
+    color: #fe8d9f;
+}
+
+/*孕期指南样式*/
+.content_list a{
+    color: #4d4d4d;
+}
+.content_list .hdTop{
+    width: 100%;
+    /*margin-top: 1px;*/
+    height: 0.8rem;
+    overflow: hidden;
+    position: fixed;
+    top: 1.045rem;
+    max-width: 750px;
+}
+.content_list .hdTop .swiper-container2 {
+    width: 100%;
+    height: 0.8rem;
+    line-height: 0.8rem;
+    background: #FFFFFF;
+}
+.content_list .hdTop  .swiper-slide {
+    text-align: center;
+    font-size: 0.28rem;
+    background: #fff;
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.content_list .detailBox{
+    width:100%;
+    margin-top: 0.2rem;
+    background: #FFFFFF;
+}
+.content_list .detailBox:nth-child(1){
+    margin-top: 1.01rem;
+}
+.content_list .detailBox .imgBox{
+    width: 100%;
+    padding: 0.3rem;
+}
+.content_list .detailBox .imgBox  img{
+    width:100%;
+    height:100%;
+}
+.content_list .detailBox h2{
+     font-size: 0.32rem;
+     color: #fe8d9f;
+    line-height: 0.8rem;
+    padding-left: 0.32rem;
+    border-bottom: 1px solid #E0E0E0;
+}
+.content_list .detailBox p{
+    padding:0.2rem 0.35rem 0.25rem 0.35rem;
+    line-height: 0.35rem;
+    font-size:0.28rem ;
+    color: #999999;
+    text-indent: 2em;
+    text-align: justify;
+    text-justify: auto;
+}
+/**/
+.content_list .show{
+    display: block !important;
+}
+
+.content_list .detail_container{
+    display: none;
+}

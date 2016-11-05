@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en" style="font-size: 0">
+<head>
+    <meta charset="UTF-8">
+    <meta name="applicable-device" content="mobile">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="address=no">
+    <meta http-equiv="Content-Type" content="text/html"/>
+    <title>健康中国</title>
+    <script src="http://res.kk-me.com/js/flexible.js"></script>
+    <link rel="stylesheet" href="http://res.kk-me.com/zt/gestation/css/base.css">
+    <link rel="stylesheet" href="http://res.kk-me.com/zt/gestation/css/lCalendar.css">
+    <link rel="stylesheet" href="http://res.kk-me.com/zt/gestation/css/rangeslider.css">
+    <link rel="stylesheet" href="css/dataTime.css">
+    <link rel="stylesheet" href="http://res.kk-me.com/css/swiper.min.css">
+    <link rel="stylesheet" href="css/gestation.css">
+</head>
+<body>
+
+<div class="container slide_one">
+     <div class="content ">
+          <header class="header">
+               排卵期计算器
+              <img src="http://res.kk-me.com/zt/gestation/images/yiwen.png" alt="">
+          </header>
+         <!--计算 计算详细展示区域-->
+         <div class="detail">
+             <div class="warn hidetext">
+                 不管是想怀孕还是避孕，确晓自己的排卵期尤为重要！一键计算排卵期，把意外拒之门外。
+             </div>
+             <h2>上次月经时间</h2>
+             <div class="oldTime">
+                 <!--readonly-->
+                 <input id="demo1" type="text" readonly name="input_date" placeholder="选择时间" data-lcalendar="2011-01-1,2020-12-31">
+             </div>
+             <h2>月经周期</h2>
+             <div class="progress">
+                 <section id="examples">
+                     <div>
+                         <output></output>
+                         <input type="range" value="28"  min="22" max="40" data-rangeslider>
+                     </div>
+                     <section id="silider-minus"></section><section id="slider-add"></section>
+                 </section>
+             </div>
+         </div>
+     </div>
+    <div class="startCount">
+        开始计算
+    </div>
+</div>
+
+<!--自己写-->
+<div class="container slide_two">
+
+</div>
+<!--自己写-->
+    <div class="container slide_three">
+        <div class="content">
+            <header class="header">
+                计算结果
+            </header>
+            <div class="srBody">
+                <div class="srtextb clearfix">
+                    <ul>
+                        <li> <div class="col1"></div> <span>安全期</span></li>
+                        <li><div class="col2"></div> <span>排卵期</span></li>
+                        <li><div class="col3"></div> <span>月经期</span></li>
+                        <li><div class="col4"></div> <span>排卵日</span></li>
+                    </ul>
+                </div>
+                <div class="swiper-container1">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide" id="Calendar1"></div>
+                        <div class="swiper-slide" id="Calendar2"></div>
+                    </div>
+                    <!-- Add Pagination -->
+                    <div class="swiper-pagination"></div>
+                </div>
+
+            </div>
+        </div>
+
+        <!--footer-->
+        <footer class="footer">
+           <div class="lt"></div>
+                计算原理说明
+           <div class="rt"></div>
+        </footer>
+    </div>
+
+
+<div class="container slide_four">
+    <p>女性的排卵日期一般在下次月经来潮前的14天左右。下次月经来潮的第1天算起，倒数14天或减去14天就是排卵日，排卵日及其前5天和后4天加在一起称为排卵期。例如，某女的月经周期为28天，本次月经来潮的第1天在12月2日，那么下次月经来潮是在12月30日（12月2日加28天），再从12月30日减去14天，则12月16日就是排卵日。排卵日及其前5天和后4天，也就是12月11日-20日为排卵期。除了月经期和排卵期，其余时间均为安全期。</p>
+    <p>女性的排卵日期因个人体质变异差异极大，因此仅供参考。</p>
+</div>
+<!--自己写-->
+<script src="http://res.kk-me.com/js/jquery-2.1.1.min.js"></script>
+<script src="http://res.kk-me.com/zt/gestation/js/lCalendar.js"></script>
+<script src="http://res.kk-me.com/zt/gestation/js/rangeslider.min.js"></script>
+<script src="http://res.kk-me.com/js/swiper.min.js"></script>
+<script src="http://res.kk-me.com/zt/gestation/js/gestation.js"></script>
+<script>
+    var formatDate = function (date) {
+        var y = date.getFullYear();
+        var m = date.getMonth() + 1;
+        m = m < 10 ? '0' + m : m;
+        var d = date.getDate();
+        d = d < 10 ? ('0' + d) : d;
+        return y + '-' + m + '-' + d;
+    };
+    var aa = "2011-01-1,"
+     aa += formatDate(new Date());
+    $("#demo1").attr("data-lcalendar",aa)
+
+    $(".header img").on("click",function(){
+            $(".warn").toggleClass("hidetext");
+    })
+    var calendar = new lCalendar();
+    calendar.init({
+        'trigger': '#demo1',
+        'type': 'date'
+    });
+    $(function(){
+        var $document   = $(document);
+        var selector    = '[data-rangeslider]';
+        var $inputRange = $(selector);
+
+        // Example functionality to demonstrate a value feedback
+        // and change the output's value.
+        function valueOutput(element) {
+            var value = element.value;
+            var output = element.parentNode.getElementsByTagName('output')[0];
+
+            output.innerHTML = value;
+        }
+
+        // Initial value output
+        for (var i = $inputRange.length - 1; i >= 0; i--) {
+            valueOutput($inputRange[i]);
+        };
+
+        // Update value output
+        $document.on('input', selector, function(e) {
+            valueOutput(e.target);
+        });
+
+        // Initialize the elements
+        $inputRange.rangeslider({
+            polyfill: false
+        });
+
+        // Example functionality to demonstrate programmatic value changes
+        $document.on('click', '#js-example-change-value button', function(e) {
+            var $inputRange = $('input[type="range"]', e.target.parentNode);
+            var value = $('input[type="number"]', e.target.parentNode)[0].value;
+
+            $inputRange.val(value).change();
+        });
+
+        // Example functionality to demonstrate programmatic attribute changes
+        $document.on('click', '#js-example-change-attributes button', function(e) {
+            var $inputRange = $('input[type="range"]', e.target.parentNode);
+            var attributes = {
+                min: $('input[name="min"]', e.target.parentNode)[0].value,
+                max: $('input[name="max"]', e.target.parentNode)[0].value,
+                step: $('input[name="step"]', e.target.parentNode)[0].value
+            };
+
+            $inputRange.attr(attributes).rangeslider('update', true);
+        });
+
+        $("#slider-add").on('click',function(e){
+            var $inputRange = $('input[type="range"]', e.target.parentNode);
+            var index = (parseInt($('input[type="range"]', e.target.parentNode)[0].value) + 1);
+            $inputRange
+                    .val(index)
+                    .change();
+        });
+        $("#silider-minus").on('click',function(e){
+            var $inputRange = $('input[type="range"]', e.target.parentNode);
+            var index = (parseInt($('input[type="range"]', e.target.parentNode)[0].value) - 1);
+            $inputRange
+                    .val(index)
+                    .change();
+        });
+
+        var is_QQInnerBro = function(){
+            var UA=navigator.userAgent;
+            if (UA.match(/QQ\//i) == "QQ/") {
+                return true;
+            } else {
+                return false;
+            }
+        };
+        //针对 ios9系统版本，做出个别处理(简直日了狗了)
+        function isIOS9() {
+            //获取固件版本
+            var getOsv = function () {
+                var reg = /OS ((\d+_?){2,3})\s/;
+                if (navigator.userAgent.match(/iPad/i) || navigator.platform.match(/iPad/i) || navigator.userAgent.match(/iP(hone|od)/i) || navigator.platform.match(/iP(hone|od)/i)) {
+                    var osv = reg.exec(navigator.userAgent);
+                    if (osv.length > 0) {
+                        return osv[0].replace('OS', '').replace('os', '').replace(/\s+/g, '').replace(/_/g, '.');
+                    }
+                }
+                return '';
+            };
+            var osv = getOsv();
+            var osvArr = osv.split('.');
+            //初始化显示ios9引导
+            if (osvArr && osvArr.length > 0) {
+                if (parseInt(osvArr[0]) == 9) {
+                    return true
+                }
+            }
+            return false
+        }
+
+        //识别苹果和安卓设备(适配个别)
+        var ua = navigator.userAgent.toLowerCase();
+
+        if(ua.match(/iPhone/i)=="iphone"){
+
+            $(".content .detail .oldTime").css("left",  "19.5%");
+
+            $(".swiper-container1 .swiper-pagination").css("top" ,"93%");
+
+            $(".slide_three .footer").css("margin-top","0.4rem")
+
+        }else if(ua.match(/iPhone/i)=="iphone" && isIOS9()){//识别 ios9版本
+
+            $(".date_btn").css("padding","0.8em 1rem");
+            $(".slide_three").css("padding-top","3.666%")
+        }
+        else if(/android/.test(ua) || is_QQInnerBro()){
+             $(".slide_three").css("padding-top","3.2%");
+             $(".slide_three .footer").css("margin-top","0.32rem");
+
+            $(".content .detail .progress #examples section:nth-of-type(1)").css("top","41.66%");
+            $(".content .detail .progress #examples section:nth-of-type(2)").css("top","36%");
+
+        }
+
+
+    })
+</script>
+
+<script>
+    //swiper容器
+    var swiper = new Swiper('.swiper-container1', {
+        pagination: '.swiper-pagination',
+        paginationClickable: true,
+        observer:true,
+        observeParents:true
+    });
+
+
+</script>
+</body>
+</html>

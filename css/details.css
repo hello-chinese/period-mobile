@@ -1,0 +1,26 @@
+body {
+    min-width: 320px;
+    max-width: 750px;
+    width: 100%;
+    margin: 0 auto;
+    background: #F2F2F2;
+}
+html,body{
+    height: 100%;
+}
+.container{
+    padding-top: 2rem;
+    padding-left: 0.4rem;
+    padding-right: 0.4rem;
+    height: 100%;
+    background: url("../images/backg.png") no-repeat center;
+    background-size:100%;
+    font-size: 0.3rem;
+    color: rgb(90,73,63);
+    line-height: 0.48rem;
+    text-align: justify;
+    text-justify: auto;
+}
+.container p{
+    text-indent: 2em;
+}

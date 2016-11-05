@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en" style="font-size: 0">
+<head>
+    <meta charset="UTF-8">
+    <meta name="applicable-device" content="mobile">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="address=no">
+    <meta http-equiv="Content-Type" content="text/html"/>
+    <title>健康中国</title>
+    <script src="http://114.215.114.199:85/js/flexible.js"></script>
+    <link rel="stylesheet" href="http://114.215.114.199:85/zt/gestation/css/base.css">
+    <link rel="stylesheet" href="http://114.215.114.199:85/css/swiper.min.css">
+    <link rel="stylesheet" href="http://114.215.114.199:85/css/dropload.css">
+    <link rel="stylesheet" href="http://114.215.114.199:85/zt/gestation/css/arc_list.css">
+</head>
+<body>
+<header class="header">
+    <!-- Swiper -->
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide active">早产儿</div>
+            <div class="swiper-slide">新生儿</div>
+
+        </div>
+    </div>
+    <!-- Swiper -->
+</header>
+
+<div class="content_list show">
+    <div class="article">
+        <h2>应对宝宝鼻塞最有效的处理方法，刷新家长技能的时刻到了！</h2>
+        <img src="http://114.215.114.199:85/zt/gestation/images/pic.png" alt="">
+    </div>
+    <div class="article">
+        <h2>应对宝宝鼻塞最有效的处理方法，刷新家长技能的时刻到了！</h2>
+        <img src="http://114.215.114.199:85/zt/gestation/images/pic.png" alt="">
+    </div>
+    <div class="article">
+        <h2>应对宝宝鼻塞最有效的处理方法，刷新家长技能的时刻到了！</h2>
+        <img src="http://114.215.114.199:85/zt/gestation/images/pic.png" alt="">
+    </div>
+    <div class="article">
+        <h2>应对宝宝鼻塞最有效的处理方法，刷新家长技能的时刻到了！</h2>
+        <img src="http://114.215.114.199:85/zt/gestation/images/pic.png" alt="">
+    </div>
+    <div class="article">
+        <h2>应对宝宝鼻塞最有效的处理方法，刷新家长技能的时刻到了！</h2>
+        <img src="http://114.215.114.199:85/zt/gestation/images/pic.png" alt="">
+    </div>
+</div>
+<div class="content_list">
+    <div class="article">
+        <h2>应对宝宝鼻塞最有效的处理方法，刷新家长技能的时刻到了！</h2>
+        <img src="http://114.215.114.199:85/zt/gestation/images/pic.png" alt="">
+    </div>
+    <div class="article">
+        <h2>应对宝宝鼻塞最有效的处理方法，刷新家长技能的时刻到了！</h2>
+        <img src="http://114.215.114.199:85/zt/gestation/images/pic.png" alt="">
+    </div>
+    <div class="article">
+        <h2>应对宝宝鼻塞最有效的处理方法，刷新家长技能的时刻到了！</h2>
+        <img src="http://114.215.114.199:85/zt/gestation/images/pic.png" alt="">
+    </div>
+    <div class="article">
+        <h2>应对宝宝鼻塞最有效的处理方法，刷新家长技能的时刻到了！</h2>
+        <img src="http://114.215.114.199:85/zt/gestation/images/pic.png" alt="">
+    </div>
+    <div class="article">
+        <h2>应对宝宝鼻塞最有效的处理方法，刷新家长技能的时刻到了！</h2>
+        <img src="http://114.215.114.199:85/zt/gestation/images/pic.png" alt="">
+    </div>
+</div>
+
+
+
+
+<script src="http://114.215.114.199:85/js/zepto.min.js"></script>
+<script src="http://114.215.114.199:85/js/touch.js"></script>
+<script src="http://114.215.114.199:85/js/swiper.min.js"></script>
+<script src="http://114.215.114.199:85/js/dropload.js"></script>
+<script>
+    $(function(){
+
+        var swiper = new Swiper('.swiper-container', {
+            pagination: '.swiper-pagination',
+            slidesPerView: 2,
+            paginationClickable: true,
+            spaceBetween: 0,
+            freeMode: true,
+            freeModeMomentumBounceRatio : 2,
+        })
+        //下拉刷新
+        var counter = 0;
+        // 每页展示个数
+        var num = 5;
+        var pageStart = 0, pageEnd = 0;
+
+        $(".content_list").dropload({
+            scrollArea: window,
+            loadDownFn: function (me) {
+                $.ajax({
+                    type:"Get",
+                    url:"",
+                    dataType:"jsonp",
+                    success:function(data){
+                        var result="";
+                        counter++;
+                        pageEnd = num * counter;
+                        pageStart = pageEnd - num;
+                        var i;
+                        for (i = pageStart; i < pageEnd; i++){
+                            //字符串的拼接
+                            result+="";
+                            if ((i + 1) >= data.length) {
+                                // 锁定
+                                me.lock();
+                                // 无数据
+                                me.noData();
+                                break;
+                            }
+                        }
+
+                        setTimeout(function () {
+                            $(".content").append(result);
+                            // 每次数据加载完，必须重置
+                            me.resetload();
+                        }, 1000);
+
+
+                    },
+                    error: function (xhr, type) {
+                        alert('请求失败');
+                        // 即使加载出错，也得重置
+                        me.resetload();
+                        return false;
+                    }
+                })
+            }
+        });
+        //slider切换事件；
+        $(".header .swiper-slide").tap(function(){
+            var index=$(this).index();
+            console.log(index);
+            $(this).addClass("active").siblings().removeClass("active");
+            $(".content_list").eq(index).addClass("show").siblings().removeClass("show")
+        })
+    })
+</script>
+</body>
+</html>
